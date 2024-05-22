@@ -3,11 +3,14 @@ const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.post('/cadastro', (req, res) => {
-  const nome = req.body.nome?.trim();
-  const email = req.body.email?.trim();
-  const senha = req.body.senha?.trim();
+  console.log('Dados recebidos:', req.body);  // Log para verificar os dados recebidos
+
+  const nome = req.body.nome.trim();
+  const email = req.body.email.trim();
+  const senha = req.body.senha.trim();
   const confirmarSenha = req.body.confirmarSenha?.trim();
 
   if (!nome || !email || !senha || !confirmarSenha) {
@@ -22,7 +25,6 @@ app.post('/cadastro', (req, res) => {
   res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso!' });
 });
 
-
 app.get('/usuarios', (req, res) => {
   const usuarios = [
     { id: 1, nome: 'Aline Beatriz', email: 'aline@email.com' },
@@ -31,7 +33,6 @@ app.get('/usuarios', (req, res) => {
 
   res.status(200).json(usuarios);
 });
-
 
 app.get('/usuarios/:id', (req, res) => {
   const id = parseInt(req.params.id);
@@ -44,9 +45,7 @@ app.get('/usuarios/:id', (req, res) => {
   res.status(200).json(usuario);
 });
 
-
 app.put('/usuarios/:id', (req, res) => {
-
   const id = parseInt(req.params.id);
   const { nome, email } = req.body;
 
@@ -59,14 +58,13 @@ app.put('/usuarios/:id', (req, res) => {
   res.status(200).json(usuarioAtualizado);
 });
 
-
 app.delete('/usuarios/:id', (req, res) => {
-
   const id = parseInt(req.params.id);
 
   res.status(204).json();
 });
 
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
