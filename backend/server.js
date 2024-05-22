@@ -5,7 +5,10 @@ const port = 3000;
 app.use(express.json());
 
 app.post('/cadastro', (req, res) => {
-  const { nome, email, senha, confirmarSenha } = req.body;
+  const nome = req.body.nome?.trim();
+  const email = req.body.email?.trim();
+  const senha = req.body.senha?.trim();
+  const confirmarSenha = req.body.confirmarSenha?.trim();
 
   if (!nome || !email || !senha || !confirmarSenha) {
     return res.status(400).json({ mensagem: 'Preencha todos os campos.' });
