@@ -21,7 +21,7 @@ app.post('/cadastro', (req, res) => {
     return res.status(400).json({ mensagem: 'As senhas não coincidem.' });
   }
 
-  console.log('Usuário cadastrado:', { nome, email, senha });
+  console.log('Usuário cadastrado:', { nome, email});
   res.status(201).json({ mensagem: 'Usuário cadastrado com sucesso!' });
 });
 
