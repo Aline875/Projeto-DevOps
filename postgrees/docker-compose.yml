@@ -8,7 +8,7 @@ services:
       ZABBIX_DB_HOST: postgres
       ZABBIX_DB_NAME: zabbix
       ZABBIX_DB_USER: zabbix
-      ZABBIX_DB_PASSWORD: zabbix  # Replace with the same password
+      ZABBIX_DB_PASSWORD: password  # Replace with the same password
       ZABBIX_SERVER_HOSTNAME: zabbix-server
     volumes:
       - ./zabbix:/etc/zabbix
