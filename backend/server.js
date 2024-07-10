@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.post('/cadastro', (req, res) => {
-  console.log('Dados recebidos:', req.body);  // Log para verificar os dados recebidos
+  console.log('Dados recebidos:', req.body);
 
   const nome = req.body.nome.trim();
   const email = req.body.email.trim();
